@@ -55,37 +55,37 @@
 .form .register-form {
   display: none;
 }
-.container {
+.container-form-form {
   position: relative;
   z-index: 1;
   max-width: 300px;
   margin: 0 auto;
 }
-.container:before, .container:after {
+.container-form:before, .container-form:after {
   content: "";
   display: block;
   clear: both;
 }
-.container .info {
+.container-form .info {
   margin: 50px auto;
   text-align: center;
 }
-.container .info h1 {
+.container-form .info h1 {
   margin: 0 0 15px;
   padding: 0;
   font-size: 36px;
   font-weight: 300;
   color: #1a1a1a;
 }
-.container .info span {
+.container-form .info span {
   color: #4d4d4d;
   font-size: 12px;
 }
-.container .info span a {
+.container-form .info span a {
   color: #000000;
   text-decoration: none;
 }
-.container .info span .fa {
+.container-form .info span .fa {
   color: #EF3B3A;
 }
 body {
@@ -97,4 +97,23 @@ body {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
+}
+
+/* .container{
+  background-color: #f2f2f2;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  height: 100vh;
+} */
+
+.container{
+  padding: 30px;
+}
+.card{
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  margin: 30px;
+  display: inline-block;
+
+}
+.card-img-top{
+  height: 20vh;
 }

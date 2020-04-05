@@ -62,7 +62,7 @@ module.exports.POST_ADMIN_LOGIN=(req,res)=>{
             req.session.username=username;
             req.session.role=role;
         }
-        res.send(value);
+        res.redirect("/admin");
     }).catch(err=>{
         res.send(err);
     })

@@ -7,6 +7,12 @@ const bodyParser = require('body-parser');
 const session = require("express-session");
 const isAuth = require("./util/AuthCheck");
 
+
+const homeRoute = require("./routes/home");
+const loginRoute = require("./routes/login");
+const logoutRoute = require("./routes/logout");
+const adminRoute = require("./routes/admin");
+
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
@@ -20,12 +26,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.set("view engine","ejs");
 
-const homeRoute = require("./routes/home");
-const loginRoute = require("./routes/login")
+
 
 app.use("/",homeRoute);
 app.use("/login",loginRoute);
-app.get("/welcome",isAuth,(req,res)=>{
+app.use("/logout",logoutRoute);
+app.use("/admin",adminRoute)
+
+app.get("/welcome",isAuth.IS_AUTH,(req,res)=>{
     res.send("authorised"+req.session.username);
 })
 
