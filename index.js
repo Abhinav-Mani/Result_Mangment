@@ -24,6 +24,12 @@ app.use(session({
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req,res,next)=>{
+    res.locals.username =req.session.username;
+    res.locals.role = req.session.role;
+    next();
+})
+
 app.set("view engine","ejs");
 
 
