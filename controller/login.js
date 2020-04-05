@@ -14,10 +14,15 @@ module.exports.GET_ADMIN_LOGIN=(req,res)=>{
 
 module.exports.POST_STUDENT_LOGIN=(req,res)=>{
 
-    pool.query("select * from test;")
+    const username= req.body.username;
+    const password= req.body.password;
+    const role= "student"
+    pool.query("SELECT * FROM users WHERE `username` = ? AND `password` = ? AND `role`= ?",[username,password,role])
     .then(result=>{
         const [value,extra]=result;
-        console.log(value);
+        if(value.length>0){
+            req.session.username=username;
+        }
         res.send(value);
     }).catch(err=>{
         res.send(err);
@@ -26,9 +31,38 @@ module.exports.POST_STUDENT_LOGIN=(req,res)=>{
 }
 
 module.exports.POST_TEACHER_LOGIN=(req,res)=>{
-    res.send("login");
+    
+    const username= req.body.username;
+    const password= req.body.password;
+    const role= "teacher"
+    pool.query("SELECT * FROM users WHERE `username` = ? AND `password` = ? AND `role`= ?",[username,password,role])
+    .then(result=>{
+        const [value,extra]=result;
+        if(value.length>0){
+            req.session.username=username;
+        }
+        res.send(value);
+    }).catch(err=>{
+        res.send(err);
+    })
+   
 }
 
 module.exports.POST_ADMIN_LOGIN=(req,res)=>{
-    res.send("login");
+    
+    const username= req.body.username;
+    const password= req.body.password;
+    const role= "admin"
+    pool.query("SELECT * FROM users WHERE `username` = ? AND `password` = ? AND `role`= ?",[username,password,role])
+    .then(result=>{
+        const [value,extra]=result;
+        if(value.length>0){
+            req.session.username=username;
+        }
+        res.send(value);
+    }).catch(err=>{
+        res.send(err);
+    })
+   
+
 }
