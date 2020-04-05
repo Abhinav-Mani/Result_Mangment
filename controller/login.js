@@ -22,6 +22,7 @@ module.exports.POST_STUDENT_LOGIN=(req,res)=>{
         const [value,extra]=result;
         if(value.length>0){
             req.session.username=username;
+            req.session.role=role;
         }
         res.send(value);
     }).catch(err=>{
@@ -40,6 +41,7 @@ module.exports.POST_TEACHER_LOGIN=(req,res)=>{
         const [value,extra]=result;
         if(value.length>0){
             req.session.username=username;
+            req.session.role=role;
         }
         res.send(value);
     }).catch(err=>{
@@ -58,6 +60,7 @@ module.exports.POST_ADMIN_LOGIN=(req,res)=>{
         const [value,extra]=result;
         if(value.length>0){
             req.session.username=username;
+            req.session.role=role;
         }
         res.send(value);
     }).catch(err=>{
