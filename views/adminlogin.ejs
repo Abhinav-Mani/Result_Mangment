@@ -1,0 +1,18 @@
+<%- include('includes/head.ejs') %>    
+<%- include('includes/navbar.ejs') %>
+
+<div class="login-page">
+    <div class="container">
+    <div class="form">
+        <h2>Admin Login</h2>
+      <form class="login-form" method="post" action="/login/admin" name="loggin_student">
+        <input type="email" placeholder="NITJSR Email" name="email"/>
+        <input type="password" placeholder="password" name="password_stu"/>
+        <button>login</button>
+      </form>
+      
+    </div>
+    </div>
+  </div>
+
+<%- include('includes/footer.ejs') %>  
