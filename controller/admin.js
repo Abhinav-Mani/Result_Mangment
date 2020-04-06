@@ -4,8 +4,7 @@ module.exports.GET_HOME=(req,res)=>{
     res.render("dashboard",{title:"ADMIN"});
 }
 
-module.exports.GET_COURSES=(req,res)=>{
-    
+module.exports.GET_COURSES=(req,res)=>{   
     getcourse();
     async function getcourse(){
         try{
@@ -43,4 +42,17 @@ module.exports.POST_ADD_COURSES=(req,res)=>{
     console.log(a);
     pool.query("insert into course  SELECT ? ,?,?, branch.code,?,?,? from branch WHERE branch.name=?",a)
     .then(result=>res.redirect("/admin/courses"));
+}
+
+module.exports.GET_DEPARTMENT=(req,res)=>{   
+    getdepartment();
+    async function getdepartment(){
+        try{
+            const [departments ,extra1] = await pool.query("SELECT * FROM branch");
+            console.log(departments);
+            res.render("departments",{title:"Admin",departments:departments});
+        }catch(err){
+            res.send({error:err});
+        }
+    }
 }
