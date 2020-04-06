@@ -85,7 +85,7 @@ module.exports.GET_TEACHERS=(req,res)=>{
     async function getdepartment(){
         try{
             const [teachers ,extra1] = await pool.query("select * from teacher");
-            console.log(teachers);
+            //console.log(teachers);
             res.render("teachers",{title:"Admin",teachers:teachers});
         }catch(err){
             res.send({error:err});
@@ -112,7 +112,17 @@ module.exports.POST_ADD_TEACHER=(req,res)=>{
     addteacher(req.body);
     async function addteacher(data){
         try{
-            console.log(data);
+            let a=[data.branch];
+            const [code,extra1] = await pool.query("SELECT code from branch where name=?",a);
+            let courseCode=code[0];
+            courseCode=courseCode.code;
+            a=[code[0].code+"%"];
+            const [count,extra2]= await pool.query("select count(*) as count from users where username LIKE ? and role='teacher' ",a);
+            let TEACHERCOUNT=count[0].count+1;
+            let newcode=courseCode+String(TEACHERCOUNT).padStart('3',0);
+            let name = data.name;
+            await pool.query("INSERT INTO users VALUES (?,'password123','teacher')",[newcode]);
+            await pool.query("INSERT INTO teacher VALUE(?,?)",[name,newcode]);
             res.redirect("/admin/teachers");
         }catch(err){
             res.send({error:err});
