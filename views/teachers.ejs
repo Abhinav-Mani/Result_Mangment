@@ -1,0 +1,24 @@
+<%- include('includes/head.ejs') %>    
+<%- include('includes/navbar.ejs') %>
+
+<div class="container">
+    <div class="card" style="margin-bottom: 20px;" >
+        <div class="card-body">
+          Add More Teacher
+        </div>
+        <a href ="/admin/teachers/new" class="btn btn-primary">
+            Teacher
+        </a>
+      </div>
+
+    <% teachers.forEach((teacher)=>{ %>
+      <div class="card">
+        <div class="card-body">
+          <%= teacher.name %>(<%= teacher.code %>)
+        </div>
+      </div>
+    <% }) %>
+
+</div>
+
+<%- include('includes/footer.ejs') %>  

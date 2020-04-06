@@ -78,3 +78,39 @@ module.exports.POST_ADD_DEPARTMENT=(req,res)=>{
     pool.query("insert into branch values(?,?);",a)
     .then(result=>res.redirect("/admin/departments"));
 }
+
+
+module.exports.GET_TEACHERS=(req,res)=>{   
+    getdepartment();
+    async function getdepartment(){
+        try{
+            const [teachers ,extra1] = await pool.query("select * from teacher");
+            console.log(teachers);
+            res.render("teachers",{title:"Admin",teachers:teachers});
+        }catch(err){
+            res.send({error:err});
+        }
+    }
+}
+
+
+module.exports.GET_ADD_DEPARTMENT=(req,res)=>{
+    adddepartmentform();
+    async function adddepartmentform(){
+        try{
+            res.render("adddepartment",{title:"Admin"});
+        }catch(err){
+            res.send({error:err});
+        }
+    }
+    
+}
+
+module.exports.POST_ADD_DEPARTMENT=(req,res)=>{
+    console.log(req.body);
+    let data=req.body;
+    var a=[data.coursename,data.code];
+    console.log(a);
+    pool.query("insert into branch values(?,?);",a)
+    .then(result=>res.redirect("/admin/departments"));
+}
