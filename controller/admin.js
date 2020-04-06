@@ -56,3 +56,26 @@ module.exports.GET_DEPARTMENT=(req,res)=>{
         }
     }
 }
+
+
+module.exports.GET_ADD_DEPARTMENT=(req,res)=>{
+    adddepartmentform();
+    async function adddepartmentform(){
+        try{
+            res.render("adddepartment",{title:"Admin"});
+        }catch(err){
+            res.send({error:err});
+        }
+    }
+    
+}
+
+module.exports.POST_ADD_DEPARTMENT=(req,res)=>{
+    console.log(req.body);
+    let data=req.body;
+    return res.send("add department");
+    var a=[data.code,data.coursename,data.semester,data.type,data.teacher,data.credit,data.branch];
+    console.log(a);
+    pool.query("insert into course  SELECT ? ,?,?, branch.code,?,?,? from branch WHERE branch.name=?",a)
+    .then(result=>res.redirect("/admin/courses"));
+}

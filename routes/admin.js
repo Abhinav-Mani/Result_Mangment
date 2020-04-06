@@ -9,5 +9,7 @@ router.get("/courses/new",homeController.GET_ADD_COURSE);
 router.post("/courses",homeController.POST_ADD_COURSES);
 
 router.get("/departments",homeController.GET_DEPARTMENT);
+router.get("/departments/new",homeController.GET_ADD_DEPARTMENT);
+router.post("/departments",homeController.POST_ADD_DEPARTMENT);
 
 module.exports = router;
