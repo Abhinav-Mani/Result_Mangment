@@ -1,14 +1,14 @@
 <%- include('includes/head.ejs') %>    
 <%- include('includes/navbar.ejs') %>
 <div class="container">
-    <form>
+    <form method="POST" action="/admin/courses/">
         <div class="form-group">
         <label for="coursename">Course Name</label>
-        <input type="text" class="form-control" id="coursename" aria-describedby="coursename" placeholder="Enter Course Name">
+        <input type="text" name="coursename" class="form-control" id="coursename" aria-describedby="coursename" placeholder="Enter Course Name">
         </div>
         <div class="form-group">
         <label for="code">Course Code</label>
-        <input type="text" class="form-control" id="code" placeholder="Course Code">
+        <input type="text" name="code" class="form-control" id="code" placeholder="Course Code">
         </div>
         <div class="form-group">
             <label for="semester">Semester</label>
@@ -31,7 +31,7 @@
         </div>
         <div class="form-group">
             <label for="Type">Type</label>
-            <select id="Type" class="form-control">
+            <select name="type" id="Type" class="form-control">
                 <option>select</option>
                 <option>Compalsory </option>
                 <option>Elective </option>
@@ -39,7 +39,7 @@
         </div>
         <div class="form-group">
             <label for="teacher">Teacher</label>
-            <select id="teacher" class="form-control">
+            <select id="teacher" name="teacher" class="form-control">
                 <option>select</option>
                 <% teachers.forEach((teacher)=>{ %>
                     <option><%= teacher.username %></option>
@@ -48,7 +48,7 @@
         </div>
         <div class="form-group">
             <label for="credit">Credit</label>
-            <select id="credit" class="form-control">
+            <select id="credit" class="form-control" name="credit">
                 <option>select</option>
                 <option>1</option>
                 <option>2</option>

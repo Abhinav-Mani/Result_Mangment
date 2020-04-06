@@ -2,6 +2,22 @@
 <%- include('includes/navbar.ejs') %>
 
 <div class="container">
+    <div class="card" style="margin-bottom: 20px;" >
+        <div class="card-body">
+          Add More courses
+        </div>
+        <a href ="/admin/courses/new" class="btn btn-primary">
+            ADD
+        </a>
+      </div>
+
+    <% courses.forEach((course)=>{ %>
+      <div class="card">
+        <div class="card-body">
+          <%= course.name %>(<%= course.id %>)
+        </div>
+      </div>
+    <% }) %>
 
 </div>
 
