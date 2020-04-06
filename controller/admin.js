@@ -108,6 +108,19 @@ module.exports.GET_ADD_TEACHER=(req,res)=>{
     
 }
 
+module.exports.POST_ADD_TEACHER=(req,res)=>{
+    addteacher(req.body);
+    async function addteacher(data){
+        try{
+            console.log(data);
+            res.redirect("/admin/teachers");
+        }catch(err){
+            res.send({error:err});
+        }
+    }
+    
+}
+
 module.exports.GET_ADD_DEPARTMENT=(req,res)=>{
     adddepartmentform();
     async function adddepartmentform(){

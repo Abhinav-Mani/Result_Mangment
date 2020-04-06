@@ -14,5 +14,6 @@ router.post("/departments",adminController.POST_ADD_DEPARTMENT);
 
 router.get("/teachers",adminController.GET_TEACHERS);
 router.get("/teachers/new",adminController.GET_ADD_TEACHER);
+router.post("/teachers",adminController.POST_ADD_TEACHER);
 
 module.exports = router;
