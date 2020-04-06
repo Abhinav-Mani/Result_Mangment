@@ -35,16 +35,6 @@ module.exports.GET_ADD_COURSE=(req,res)=>{
 module.exports.POST_ADD_COURSES=(req,res)=>{
     console.log(req.body);
     let data=req.body;
-//     SELECT "CS101" ,"dbms","1", branch.code,
-// "1","cse001","3" 
-// from branch WHERE branch.name="Computer Science and Enginnering"
-    // id varchar(10) primary key,
-    // name varchar(255) not null,
-    // semester varchar(2) not null,
-    // branch varchar(10) not null,
-    // type int(1) not null,
-    // teacher varchar(255),
-    // credit int(1) not null,
     if(data.type=="Compalsory")
         data.type=1;
     else
@@ -52,5 +42,5 @@ module.exports.POST_ADD_COURSES=(req,res)=>{
     var a=[data.code,data.coursename,data.semester,data.type,data.teacher,data.credit,data.branch];
     console.log(a);
     pool.query("insert into course  SELECT ? ,?,?, branch.code,?,?,? from branch WHERE branch.name=?",a)
-    .then(result=>res.redirect("/admin/courses/new"));
+    .then(result=>res.redirect("/admin/courses"));
 }
