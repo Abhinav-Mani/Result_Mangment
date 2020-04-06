@@ -94,6 +94,20 @@ module.exports.GET_TEACHERS=(req,res)=>{
 }
 
 
+module.exports.GET_ADD_TEACHER=(req,res)=>{
+    addteacherform();
+    async function addteacherform(){
+        try{
+            const [branches,extra1] = await pool.query("SELECT name FROM branch");
+            //const [teachers ,extra2] = await pool.query("SELECT username FROM users where role='teacher'");
+            res.render("addteacher",{title:"Admin",branches:branches});
+        }catch(err){
+            res.send({error:err});
+        }
+    }
+    
+}
+
 module.exports.GET_ADD_DEPARTMENT=(req,res)=>{
     adddepartmentform();
     async function adddepartmentform(){
