@@ -73,9 +73,8 @@ module.exports.GET_ADD_DEPARTMENT=(req,res)=>{
 module.exports.POST_ADD_DEPARTMENT=(req,res)=>{
     console.log(req.body);
     let data=req.body;
-    return res.send("add department");
-    var a=[data.code,data.coursename,data.semester,data.type,data.teacher,data.credit,data.branch];
+    var a=[data.coursename,data.code];
     console.log(a);
-    pool.query("insert into course  SELECT ? ,?,?, branch.code,?,?,? from branch WHERE branch.name=?",a)
-    .then(result=>res.redirect("/admin/courses"));
+    pool.query("insert into branch values(?,?);",a)
+    .then(result=>res.redirect("/admin/departments"));
 }
