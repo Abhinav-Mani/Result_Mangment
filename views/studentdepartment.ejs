@@ -1,0 +1,21 @@
+<%- include('includes/head.ejs') %>    
+<%- include('includes/navbar.ejs') %>
+
+<div class="container">
+    <div class="card" style="margin-bottom: 20px;" >
+        <div class="card-body">
+          STUDENT DEPARTMENT
+        </div>
+      </div>
+
+    <% departments.forEach((department)=>{ %>
+      <div class="card">
+        <div class="card-body">
+          <a href="/admin/student/<%= department.code %>" class="stretched-link"><%= department.name %>(<%= department.code %>)</a>
+        </div>
+    </div>
+    <% }) %>
+
+</div>
+
+<%- include('includes/footer.ejs') %>  

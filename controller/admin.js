@@ -99,7 +99,6 @@ module.exports.GET_ADD_TEACHER=(req,res)=>{
     async function addteacherform(){
         try{
             const [branches,extra1] = await pool.query("SELECT name FROM branch");
-            //const [teachers ,extra2] = await pool.query("SELECT username FROM users where role='teacher'");
             res.render("addteacher",{title:"Admin",branches:branches});
         }catch(err){
             res.send({error:err});
@@ -150,4 +149,30 @@ module.exports.POST_ADD_DEPARTMENT=(req,res)=>{
     console.log(a);
     pool.query("insert into branch values(?,?);",a)
     .then(result=>res.redirect("/admin/departments"));
+}
+
+module.exports.GET_STUDENTS_DEPARMENT=(req,res)=>{   
+    getdepartment();
+    async function getdepartment(){
+        try{
+            const [departments ,extra1] = await pool.query("SELECT * FROM branch");
+            console.log(departments);
+            res.render("studentdepartment",{title:"Admin",departments:departments});
+        }catch(err){
+            res.send({error:err});
+        }
+    }
+}
+
+module.exports.GET_STUDENTS=(req,res)=>{   
+    let id=req.params.code;
+    getstudent(id);
+    async function getstudent(id){
+        try{
+            const [students ,extra1] = await pool.query("select * from student where branch=?",[id]);
+            res.render("students",{title:"Admin",students:students});
+        }catch(err){
+            res.send({error:err});
+        }
+    }
 }

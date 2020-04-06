@@ -16,4 +16,7 @@ router.get("/teachers",adminController.GET_TEACHERS);
 router.get("/teachers/new",adminController.GET_ADD_TEACHER);
 router.post("/teachers",adminController.POST_ADD_TEACHER);
 
+router.get("/student",adminController.GET_STUDENTS_DEPARMENT);
+router.get("/student/:code",adminController.GET_STUDENTS);
+
 module.exports = router;
