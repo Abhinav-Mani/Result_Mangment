@@ -8,7 +8,7 @@
           <li class="list-group-item"><%= student.email %></li>
         </ul>
       </div>
-    <form method="POST" action="/admin/courses/">
+    <form method="POST" action="/admin/<%= student.branch %>/<%= student.rollno %>">
         <% let no=1 %>
         <% subjects.forEach((subject)=>{ %>
             <% if(subject.type==1){ %>

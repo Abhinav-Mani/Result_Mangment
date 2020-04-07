@@ -231,3 +231,8 @@ module.exports.GET_ADD_STUDENTS_SUBJECT=(req,res)=>{
         }
     }
 }
+
+module.exports.POST_ADD_STUDENTS_SUBJECT=(req,res)=>{ 
+    console.log(req.body);
+    res.send("Added");
+}

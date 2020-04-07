@@ -21,5 +21,6 @@ router.get("/student/:code",adminController.GET_STUDENTS);
 router.get("/student/:code/new",adminController.GET_ADD_STUDENTS);
 router.post("/student/:code",adminController.POST_ADD_STUDENTS);
 router.get("/student/:code/:rollno",adminController.GET_ADD_STUDENTS_SUBJECT);
+router.post("/student/:code/:rollno",adminController.POST_ADD_STUDENTS_SUBJECT);
 
 module.exports = router;
