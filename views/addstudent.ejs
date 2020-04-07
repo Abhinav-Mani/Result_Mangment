@@ -1,0 +1,43 @@
+<%- include('includes/head.ejs') %>    
+<%- include('includes/navbar.ejs') %>
+<div class="container">
+    <form method="POST" action="/admin/teachers/">
+        <div class="form-group">
+            <label for="name">Student Name</label>
+            <input type="text" name="name" class="form-control" id="name" aria-describedby="name" placeholder="Enter Student Name">
+        </div>
+        <div class="form-group">
+            <label for="rollno">Student Roll No</label>
+            <input type="text" name="rollno" class="form-control" id="rollno" aria-describedby="rollno" placeholder="Enter Student Roll No">  
+        </div>
+        <div class="form-group">
+            <label for="name">Email</label>
+            <input type="email" name="email" class="form-control" id="email" aria-describedby="Email" placeholder="Enter Student Email">
+        </div>
+        <div class="form-group">
+            <label for="branch">Branch</label>
+            <select id="branch" name="branch"  class="form-control" readonly>
+                <% branch.forEach((branch)=>{ %>
+                    <option><%= branch.name %></option>
+                <% }) %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="semester">Semester</label>
+            <select id="semester" name="semester" class="form-control">
+                <option>select</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<%- include('includes/footer.ejs') %>  

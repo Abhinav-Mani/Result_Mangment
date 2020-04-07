@@ -170,7 +170,21 @@ module.exports.GET_STUDENTS=(req,res)=>{
     async function getstudent(id){
         try{
             const [students ,extra1] = await pool.query("select * from student where branch=?",[id]);
-            res.render("students",{title:"Admin",students:students});
+            res.render("students",{title:"Admin",students:students,id:id});
+        }catch(err){
+            res.send({error:err});
+        }
+    }
+}
+
+module.exports.GET_ADD_STUDENTS=(req,res)=>{   
+    let id=req.params.code;
+    addstudentform(id);
+    async function addstudentform(id){
+        try{
+            const [branch,extra1] = await pool.query("SELECT * FROM branch where code=?",[id]);
+            console.log(branch);
+            res.render("addstudent",{title:"Admin",branch:branch});
         }catch(err){
             res.send({error:err});
         }
