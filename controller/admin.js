@@ -190,3 +190,25 @@ module.exports.GET_ADD_STUDENTS=(req,res)=>{
         }
     }
 }
+
+module.exports.POST_ADD_STUDENTS=(req,res)=>{   
+    let id=req.params.code;
+    let data=req.body;
+    console.log(data);
+    addstudent(id,data);
+    async function addstudent(id,data){
+        try{
+            let rollno=data.rollno;
+            let branch=id;
+            let semester=data.semester;
+            let name=data.name;
+            let email=data.email;
+            let year=data.year;
+            await pool.query("INSERT INTO users VALUE(?,'password123','student')",[rollno]);
+            await pool.query("INSERT INTO student VALUES(?,?,?,?,?,?)",[rollno,branch,semester,name,email,year]);
+            res.redirect("/admin/student/CSE")
+        }catch(err){
+            res.send({error:err});
+        }
+    }
+}
