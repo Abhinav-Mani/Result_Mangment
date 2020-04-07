@@ -212,3 +212,22 @@ module.exports.POST_ADD_STUDENTS=(req,res)=>{
         }
     }
 }
+
+module.exports.GET_ADD_STUDENTS_SUBJECT=(req,res)=>{ 
+    let roll=req.params.rollno;
+    let subject=req.params.code;
+    addStudentSubject(roll,subject);
+    async function addStudentSubject(){
+        try{
+            console.log(roll+" "+subject);
+            const [student,extra1] =await pool.query("SELECT * FROM student WHERE rollno=?",[roll]);
+            if(student.length==0 || student[0].branch != subject ){
+                return res.send("NO SUCH STUDENT");
+            }
+            const [subjects,extra2] =await pool.query("SELECT * FROM COURSE WHERE branch = ?",[subject]);
+            res.render("addstudentsubject",{title:"Admin",student:student[0],subjects:subjects});
+        }catch(error){
+            res.send(error);
+        }
+    }
+}

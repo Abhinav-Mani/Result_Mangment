@@ -1,0 +1,27 @@
+<%- include('includes/head.ejs') %>    
+<%- include('includes/navbar.ejs') %>
+<div class="container">
+    <div class="card" style="margin-bottom: 20px;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= student.name %></li>
+          <li class="list-group-item"><%= student.rollno %></li>
+          <li class="list-group-item"><%= student.email %></li>
+        </ul>
+      </div>
+    <form method="POST" action="/admin/courses/">
+        <% let no=1 %>
+        <% subjects.forEach((subject)=>{ %>
+            <% if(subject.type==1){ %>
+                <div class="form-group">
+                    <label for="subject<%=no%>"><%= subject.name %></label>
+                    <input type="text" class="form-control" id="subject<%=no%>" value="<%= subject.id %>" readonly>
+                </div>
+                <% no++; %>
+            <% } %>
+        <% }) %>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<%- include('includes/footer.ejs') %>  
