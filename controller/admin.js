@@ -206,7 +206,8 @@ module.exports.POST_ADD_STUDENTS=(req,res)=>{
             let year=data.year;
             await pool.query("INSERT INTO users VALUE(?,'password123','student')",[rollno]);
             await pool.query("INSERT INTO student VALUES(?,?,?,?,?,?)",[rollno,branch,semester,name,email,year]);
-            res.redirect("/admin/student/CSE")
+            await pool.query("INSERT INTO cousrechoice (rollno,semester,year) VALUES(?,?,?)",[rollno,semester,year]);
+            res.redirect("/admin/student/"+branch+"/"+rollno);
         }catch(err){
             res.send({error:err});
         }
@@ -234,5 +235,17 @@ module.exports.GET_ADD_STUDENTS_SUBJECT=(req,res)=>{
 
 module.exports.POST_ADD_STUDENTS_SUBJECT=(req,res)=>{ 
     console.log(req.body);
-    res.send("Added");
+    let data =req.body;
+    let rollno=req.params.rollno;
+    let subject=req.params.code;
+    addsubjects();
+    async function addsubjects(){
+        try{
+            let a=[data.subject1,data.subject2,data.subject3,data.subject4,data.subject5,data.subject6,data.subject7,data.subject8,rollno];
+            await pool.query("UPDATE cousrechoice SET subject1=?,subject2=?,subject3=?,subject4=?,subject5=?,subject6=?,subject7=?,subject8=? WHERE rollno=?",a);
+            res.redirect("/admin/student/"+subject);            
+        }catch(err){
+            res.send(err);
+        }
+    }
 }

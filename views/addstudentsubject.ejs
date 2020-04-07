@@ -8,13 +8,13 @@
           <li class="list-group-item"><%= student.email %></li>
         </ul>
       </div>
-    <form method="POST" action="/admin/<%= student.branch %>/<%= student.rollno %>">
+    <form method="POST" action="/admin/student/<%= student.branch %>/<%= student.rollno %>">
         <% let no=1 %>
         <% subjects.forEach((subject)=>{ %>
             <% if(subject.type==1){ %>
                 <div class="form-group">
                     <label for="subject<%=no%>"><%= subject.name %></label>
-                    <input type="text" class="form-control" id="subject<%=no%>" value="<%= subject.id %>" readonly>
+                    <input type="text" class="form-control" name="subject<%=no%>" id="subject<%=no%>" value="<%= subject.id %>" readonly>
                 </div>
                 <% no++; %>
             <% } %>
