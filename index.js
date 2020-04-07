@@ -37,7 +37,7 @@ app.set("view engine","ejs");
 app.use("/",homeRoute);
 app.use("/login",loginRoute);
 app.use("/logout",logoutRoute);
-app.use("/admin",adminRoute)
+app.use("/admin",isAuth.IS_ADMIN,adminRoute);
 
 app.get("/welcome",isAuth.IS_AUTH,(req,res)=>{
     res.send("authorised"+req.session.username);
