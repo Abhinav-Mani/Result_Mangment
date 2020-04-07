@@ -1,7 +1,7 @@
 <%- include('includes/head.ejs') %>    
 <%- include('includes/navbar.ejs') %>
 <div class="container">
-    <form method="POST" action="/admin/teachers/">
+    <form method="POST" action="/admin/student/<%=branch[0].code%>/">
         <div class="form-group">
             <label for="name">Student Name</label>
             <input type="text" name="name" class="form-control" id="name" aria-describedby="name" placeholder="Enter Student Name">
@@ -18,7 +18,7 @@
             <label for="branch">Branch</label>
             <select id="branch" name="branch"  class="form-control" readonly>
                 <% branch.forEach((branch)=>{ %>
-                    <option><%= branch.name %></option>
+                    <option><%= branch.name %>(<%= branch.code %>)</option>
                 <% }) %>
             </select>
         </div>
