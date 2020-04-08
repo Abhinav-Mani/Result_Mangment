@@ -12,6 +12,7 @@ const homeRoute = require("./routes/home");
 const loginRoute = require("./routes/login");
 const logoutRoute = require("./routes/logout");
 const adminRoute = require("./routes/admin");
+const teacherRoute = require("./routes/teacher");
 
 app.use(session({
     secret: process.env.SECRET,
@@ -38,6 +39,7 @@ app.use("/",homeRoute);
 app.use("/login",loginRoute);
 app.use("/logout",logoutRoute);
 app.use("/admin",isAuth.IS_ADMIN,adminRoute);
+app.use("/teacher",teacherRoute);
 
 app.get("/welcome",isAuth.IS_AUTH,(req,res)=>{
     res.send("authorised"+req.session.username);
