@@ -1,27 +1,29 @@
 <%- include('includes/head.ejs') %>    
 <%- include('includes/navbar.ejs') %>
 <div class="container" style="background-color: antiquewhite; margin-top: 20px;">
-    <form>
-        <div class="form-group row">
+    <h1 style="text-align: center;" ><%= code %></h1>
+    <form method="POST" action="/teacher/<%=code%>">
+
+        <!-- <div class="form-group row">
         <label for="no" class="col-sm-2 col-form-label">No of Student</label>
         <div class="col-sm-10">
             <input type="text" class="form-control-plaintext" name="no" id="no" value="<%= students.length %>" readonly>
         </div>
-        </div>
+        </div> -->
         <% let i = 1; %>
         <% students.forEach((student)=>{ %>
         <div class="row">
             <div class="col">
-              <input type="text" name="<%=i%>[name]" class="form-control" name="name" value="<%= student.rollno %>" readonly>
+              <input type="text" name="name" class="form-control" name="name" value="<%= student.rollno %>" readonly>
             </div>
             <div class="col">
-              <input type="number"  name="<%=i%>[mid]" class="form-control" placeholder="Mid Sem Marks">
+              <input type="number"  name="mid" class="form-control" placeholder="Mid Sem Marks">
             </div>
             <div class="col">
-                <input type="number" name="<%=i%>[inter]" class="form-control" placeholder="Internal Marks">
+                <input type="number" name="inter" class="form-control" placeholder="Internal Marks">
             </div>
             <div class="col">
-                <input type="number"  name="<%=i%>[end]" class="form-control" placeholder="END Sem Marks">
+                <input type="number"  name="end" class="form-control" placeholder="END Sem Marks">
             </div>
         </div>
         <%i++%>
