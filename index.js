@@ -39,7 +39,7 @@ app.use("/",homeRoute);
 app.use("/login",loginRoute);
 app.use("/logout",logoutRoute);
 app.use("/admin",isAuth.IS_ADMIN,adminRoute);
-app.use("/teacher",teacherRoute);
+app.use("/teacher",isAuth.IS_TEACHER,teacherRoute);
 
 app.get("/welcome",isAuth.IS_AUTH,(req,res)=>{
     res.send("authorised"+req.session.username);

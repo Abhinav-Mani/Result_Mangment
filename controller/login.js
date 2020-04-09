@@ -43,7 +43,7 @@ module.exports.POST_TEACHER_LOGIN=(req,res)=>{
             req.session.username=username;
             req.session.role=role;
         }
-        res.send(value);
+        res.redirect("/teacher");
     }).catch(err=>{
         res.send(err);
     })
