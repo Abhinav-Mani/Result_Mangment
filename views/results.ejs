@@ -1,0 +1,247 @@
+<%- include('includes/head.ejs') %>    
+<%- include('includes/navbar.ejs') %>
+
+<%
+function grade(a){
+    if(a>=90){
+      return 'O';
+    }
+    else if(a>=80){
+      return 'A'
+    }
+    else if(a>=70){
+      return 'B'
+    }
+    else if(a>=60){
+      return 'C'
+    }
+    else if(a>=50){
+      return 'D'
+    }
+    else if(a>=40){
+       return 'E'
+    }
+    else if(a>=35){
+      return 'P'
+    }
+    return 'F'
+  }
+%>
+<div class="container">
+    <div class="card" style="margin-bottom: 20px;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= student.name %></li>
+          <li class="list-group-item"><%= student.rollno %></li>
+          <li class="list-group-item"><%= student.email %></li>
+        </ul>
+    </div>
+    <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#1" role="tab" aria-controls="nav-home" aria-selected="true">SEMESTER 1</a>
+        <a class="nav-item nav-link " id="nav-home-tab" data-toggle="tab" href="#2" role="tab" aria-controls="nav-home" aria-selected="true">SEMESTER 2</a>
+        <a class="nav-item nav-link " id="nav-home-tab" data-toggle="tab" href="#3" role="tab" aria-controls="nav-home" aria-selected="true">SEMESTER 3</a>
+        <a class="nav-item nav-link " id="nav-home-tab" data-toggle="tab" href="#4" role="tab" aria-controls="nav-home" aria-selected="true">SEMESTER 4</a>
+        <a class="nav-item nav-link " id="nav-home-tab" data-toggle="tab" href="#5" role="tab" aria-controls="nav-home" aria-selected="true">SEMESTER 5</a>
+        <a class="nav-item nav-link " id="nav-home-tab" data-toggle="tab" href="#6" role="tab" aria-controls="nav-home" aria-selected="true">SEMESTER 6</a>
+        <a class="nav-item nav-link " id="nav-home-tab" data-toggle="tab" href="#7" role="tab" aria-controls="nav-home" aria-selected="true">SEMESTER 7</a>
+        <a class="nav-item nav-link " id="nav-home-tab" data-toggle="tab" href="#8" role="tab" aria-controls="nav-home" aria-selected="true">SEMESTER 8</a>
+    </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent" style="box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); background-color: azure;">
+        <div class="tab-pane fade show active" id="1" role="tabpanel" aria-labelledby="nav-home-tab">
+            <table>
+                <tr>
+                  <th>Subjects</th>
+                  <th>Midsem Marks</th>
+                  <th>Internal Marks</th>
+                  <th>Endsem Marks</th>
+                  <th>Grade</th>
+                </tr>
+                <%let sem = 1 %>
+                <% marks.forEach((mark)=>{%>
+                    <% if(mark.semester==sem){ %>
+                        <tr>
+                            <td><%= mark.name %>(<%= mark.subject %>)</td>
+                            <td><%= mark.midsem %></td>
+                            <td><%= mark.internal %></td>
+                            <td><%= mark.endsem %></td>
+                            <td><%= grade(mark.midsem + mark.internal + mark.endsem) %></td>
+                        </tr>
+                    <% } %>
+                <%})%>
+                
+              </table>
+        </div>
+        <div class="tab-pane fade " id="2" role="tabpanel" aria-labelledby="nav-home-tab">
+            <table>
+                <tr>
+                  <th>Subjects</th>
+                  <th>Midsem Marks</th>
+                  <th>Internal Marks</th>
+                  <th>Endsem Marks</th>
+                  <th>Grade</th>
+                </tr>
+                <%sem = 2 %>
+                <% marks.forEach((mark)=>{%>
+                    <% if(mark.semester==sem){ %>
+                        <tr>
+                            <td><%= mark.name %>(<%= mark.subject %>)</td>
+                            <td><%= mark.midsem %></td>
+                            <td><%= mark.internal %></td>
+                            <td><%= mark.endsem %></td>
+                            <td><%= grade(mark.midsem + mark.internal + mark.endsem) %></td>
+                        </tr>
+                    <% } %>
+                <%})%>
+                
+              </table>
+        </div>
+        <div class="tab-pane fade " id="3" role="tabpanel" aria-labelledby="nav-home-tab">
+            <table>
+                <tr>
+                  <th>Subjects</th>
+                  <th>Midsem Marks</th>
+                  <th>Internal Marks</th>
+                  <th>Endsem Marks</th>
+                  <th>Grade</th>
+                </tr>
+                <%sem = 3 %>
+                <% marks.forEach((mark)=>{%>
+                    <% if(mark.semester==sem){ %>
+                        <tr>
+                            <td><%= mark.name %>(<%= mark.subject %>)</td>
+                            <td><%= mark.midsem %></td>
+                            <td><%= mark.internal %></td>
+                            <td><%= mark.endsem %></td>
+                            <td><%= grade(mark.midsem + mark.internal + mark.endsem) %></td>
+                        </tr>
+                    <% } %>
+                <%})%>
+                
+              </table>
+        </div>
+        <div class="tab-pane fade " id="4" role="tabpanel" aria-labelledby="nav-home-tab">
+            <table>
+                <tr>
+                  <th>Subjects</th>
+                  <th>Midsem Marks</th>
+                  <th>Internal Marks</th>
+                  <th>Endsem Marks</th>
+                  <th>Grade</th>
+                </tr>
+                <%sem = 4 %>
+                <% marks.forEach((mark)=>{%>
+                    <% if(mark.semester==sem){ %>
+                        <tr>
+                            <td><%= mark.name %>(<%= mark.subject %>)</td>
+                            <td><%= mark.midsem %></td>
+                            <td><%= mark.internal %></td>
+                            <td><%= mark.endsem %></td>
+                            <td><%= grade(mark.midsem + mark.internal + mark.endsem) %></td>
+                        </tr>
+                    <% } %>
+                <%})%>
+                
+              </table>
+        </div>
+        <div class="tab-pane fade " id="5" role="tabpanel" aria-labelledby="nav-home-tab">
+            <table>
+                <tr>
+                  <th>Subjects</th>
+                  <th>Midsem Marks</th>
+                  <th>Internal Marks</th>
+                  <th>Endsem Marks</th>
+                  <th>Grade</th>
+                </tr>
+                <%sem = 5 %>
+                <% marks.forEach((mark)=>{%>
+                    <% if(mark.semester==sem){ %>
+                        <tr>
+                            <td><%= mark.name %>(<%= mark.subject %>)</td>
+                            <td><%= mark.midsem %></td>
+                            <td><%= mark.internal %></td>
+                            <td><%= mark.endsem %></td>
+                            <td><%= grade(mark.midsem + mark.internal + mark.endsem) %></td>
+                        </tr>
+                    <% } %>
+                <%})%>
+                
+              </table>
+        </div>
+        <div class="tab-pane fade " id="6" role="tabpanel" aria-labelledby="nav-home-tab">
+            <table>
+                <tr>
+                  <th>Subjects</th>
+                  <th>Midsem Marks</th>
+                  <th>Internal Marks</th>
+                  <th>Endsem Marks</th>
+                  <th>Grade</th>
+                </tr>
+                <%sem = 6 %>
+                <% marks.forEach((mark)=>{%>
+                    <% if(mark.semester==sem){ %>
+                        <tr>
+                            <td><%= mark.name %>(<%= mark.subject %>)</td>
+                            <td><%= mark.midsem %></td>
+                            <td><%= mark.internal %></td>
+                            <td><%= mark.endsem %></td>
+                            <td><%= grade(mark.midsem + mark.internal + mark.endsem) %></td>
+                        </tr>
+                    <% } %>
+                <%})%>
+                
+              </table>
+        </div>
+        <div class="tab-pane fade " id="7" role="tabpanel" aria-labelledby="nav-home-tab">
+            <table>
+                <tr>
+                  <th>Subjects</th>
+                  <th>Midsem Marks</th>
+                  <th>Internal Marks</th>
+                  <th>Endsem Marks</th>
+                  <th>Grade</th>
+                </tr>
+                <%sem = 7 %>
+                <% marks.forEach((mark)=>{%>
+                    <% if(mark.semester==sem){ %>
+                        <tr>
+                            <td><%= mark.name %>(<%= mark.subject %>)</td>
+                            <td><%= mark.midsem %></td>
+                            <td><%= mark.internal %></td>
+                            <td><%= mark.endsem %></td>
+                            <td><%= grade(mark.midsem + mark.internal + mark.endsem) %></td>
+                        </tr>
+                    <% } %>
+                <%})%>
+                
+              </table>
+        </div>
+        <div class="tab-pane fade " id="8" role="tabpanel" aria-labelledby="nav-home-tab">
+            <table>
+                <tr>
+                  <th>Subjects</th>
+                  <th>Midsem Marks</th>
+                  <th>Internal Marks</th>
+                  <th>Endsem Marks</th>
+                  <th>Grade</th>
+                </tr>
+                <%sem = 8 %>
+                <% marks.forEach((mark)=>{%>
+                    <% if(mark.semester==sem){ %>
+                        <tr>
+                            <td><%= mark.name %>(<%= mark.subject %>)</td>
+                            <td><%= mark.midsem %></td>
+                            <td><%= mark.internal %></td>
+                            <td><%= mark.endsem %></td>
+                            <td><%= grade(mark.midsem + mark.internal + mark.endsem) %></td>
+                        </tr>
+                    <% } %>
+                <%})%>
+                
+              </table>
+        </div>
+    </div>
+
+</div>
+
+<%- include('includes/footer.ejs') %>  

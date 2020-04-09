@@ -5,7 +5,7 @@ module.exports.GET_HOME=(req,res)=>{
     async function showTeacherSubject(){
         try{
             let teacher=req.session.username;
-            const [courses,extra]=await pool.query("select * from course where teacher = 'CSE004'",[teacher]);
+            const [courses,extra]=await pool.query("select * from course where teacher = ?",[teacher]);
             res.render("teacherHome",{title:"TEACHER",courses:courses});
         }catch(err){
             res.send(err);

@@ -24,7 +24,7 @@ module.exports.POST_STUDENT_LOGIN=(req,res)=>{
             req.session.username=username;
             req.session.role=role;
         }
-        res.send(value);
+        res.redirect("/result");
     }).catch(err=>{
         res.send(err);
     })
