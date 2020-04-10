@@ -17,13 +17,13 @@
               <input type="text" name="name" class="form-control" name="name" value="<%= student.rollno %>" readonly>
             </div>
             <div class="col">
-              <input type="number"  name="mid" class="form-control" placeholder="Mid Sem Marks">
+              <input type="number"  name="mid" class="form-control" placeholder="Mid Sem Marks" value="<%= student.midsem %>">
             </div>
             <div class="col">
-                <input type="number" name="inter" class="form-control" placeholder="Internal Marks">
+                <input type="number" name="inter" class="form-control" placeholder="Internal Marks" value="<%= student.internal %>">
             </div>
             <div class="col">
-                <input type="number"  name="end" class="form-control" placeholder="END Sem Marks">
+                <input type="number"  name="end" class="form-control" placeholder="END Sem Marks" value="<%= student.endsem %>">
             </div>
         </div>
         <%i++%>

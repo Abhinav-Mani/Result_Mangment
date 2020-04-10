@@ -18,10 +18,11 @@ module.exports.GET_STUDENT_MARKS_ENTRY=(req,res)=>{
     async function showMarksEntryForm(){
         const code =  req.params.code;
         let a=[]
-        for(let i=0;i<8;i++){
+        for(let i=0;i<9;i++){
             a.push(code);
         }
-        const [students,extra]=await pool.query("select rollno from cousrechoice where subject1=? OR subject2=? OR subject3=? OR subject4=? OR subject5=? OR subject6=? OR subject7=? OR subject8=?",a);
+        let sqlstatement="SELECT * FROM (select rollno from cousrechoice where subject1=? OR subject2=? OR subject3=? OR subject4=? OR subject5=? OR subject6=? OR subject7=? OR subject8=?) AS A LEFT JOIN (SELECT * FROM MARKS where subject=?) AS B ON  A.rollno = B.code"
+        const [students,extra]=await pool.query(sqlstatement,a);
         res.render("marksentry",{title:"Teacher",students:students,code:code});
     }
 }
